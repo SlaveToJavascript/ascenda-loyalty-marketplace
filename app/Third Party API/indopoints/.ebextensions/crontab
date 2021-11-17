@@ -1,0 +1,1 @@
+*/5 * * * * python /opt/python/bundle/2/app/ipScheduler.py

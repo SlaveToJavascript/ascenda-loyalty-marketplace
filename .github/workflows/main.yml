@@ -1,0 +1,31 @@
+name: CI
+env:
+  DEPLOY_PACKAGE_NAME: "loyaltyapi-${{ github.sha }}.zip"
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    paths:
+      - 'eb-flask/LoyaltyAPI/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@master
+      
+      - name: Generate deployment package
+        run: zip -r -j ${{ env.DEPLOY_PACKAGE_NAME }} ./eb-flask/LoyaltyAPI -x '*.zip'
+      
+      - name: Beanstalk Deploy
+        uses: einaregilsson/beanstalk-deploy@v16
+        with:
+          aws_access_key: AKIAWGZOGTL2WLBFP5IB
+          aws_secret_key: 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
+          region: us-east-1
+          application_name: ITSA-US-EAST-1-LOYALTY-API
+          environment_name: Itsauseast1loyaltyapi-env
+          version_label: LoyaltyAPI-${{ github.sha }}
+          deployment_package: ${{ env.DEPLOY_PACKAGE_NAME }}

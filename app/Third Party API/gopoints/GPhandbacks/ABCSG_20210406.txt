@@ -1,0 +1,2 @@
+Transfer Data,Amount,Reference number,Outcome code
+2021-04-02,7500,e73fe84f7e2143d5a377f70753abe241,0002

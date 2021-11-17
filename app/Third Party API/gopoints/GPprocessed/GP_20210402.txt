@@ -1,0 +1,3 @@
+index,Member ID,Member first name,Member last name,Transfer date,Amount,Reference number,Partner code
+1,3457789L,Amy,NG,2021-04-02,7500,e73fe84f7e2143d5a377f70753abe241,ABCSG
+2,2153642985,Amy,NG,2021-04-02,150,c24d6a81fffd4d5fb0973ccf8d4c9ef1,ABCSG
